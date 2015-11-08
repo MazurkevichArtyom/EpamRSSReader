@@ -13,7 +13,7 @@ class TableNewsView : UITableViewController{
     
     var myParser = Parser()
     var news = [News]()
-    
+    var indexRow = 0
     
     override func viewDidLoad() {
         let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
@@ -64,7 +64,7 @@ class TableNewsView : UITableViewController{
         cell.dateNews.text = newsToCell.dateNews
         cell.nameNews.text = newsToCell.titleNews
         cell.pictureNews.image = UIImage(named: "e6506d85fdbbe181e04d9ceaf2b8f5ea.jpg")
-        
+        cell.indexTag = indexPath.row
         let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
         
         dispatch_async(queue, { () -> Void in
@@ -72,7 +72,9 @@ class TableNewsView : UITableViewController{
             let urlPict = NSURL(string: newsToCell.imageLinkNews)
             if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    cell.pictureNews.image = newsImage
+                    if (cell.indexTag == indexPath.row){
+                        cell.pictureNews.image = newsImage
+                    }
                 })
             }
         }
@@ -82,36 +84,6 @@ class TableNewsView : UITableViewController{
         return cell
     }
     
-    /*func loadPicturesInCells (count : Int)
-    {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: count) as! NewsCell
-        let newsToCell = news[count]
-        let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
-        dispatch_async(queue, { () -> Void in
-            let pict = self.news[count]
-            if (pict.imageLinkNews.hasSuffix(".jpg") || pict.imageLinkNews.hasSuffix(".png") || pict.imageLinkNews.hasSuffix(".gif")){
-                let urlPict = NSURL(string: newsToCell.imageLinkNews)
-                if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
-                    cell.pictureNews.image = newsImage
-                }
-                
-            }
-            
-            
-        })
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        })
-
-    }*/
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

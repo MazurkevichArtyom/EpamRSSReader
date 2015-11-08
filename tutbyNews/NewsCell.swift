@@ -13,7 +13,7 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var nameNews: UILabel!
     @IBOutlet weak var dateNews: UILabel!
     @IBOutlet weak var textNews: UILabel!
-    
+    var indexTag: Int!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

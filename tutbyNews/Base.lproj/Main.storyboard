@@ -107,6 +107,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="aPC-Mb-lvy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="S1G-FM-VJE"/>
+                        <barButtonItem key="rightBarButtonItem" image="web" id="Xai-lu-bHR"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pn-Sl-gIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,5 +134,6 @@
     </scenes>
     <resources>
         <image name="e6506d85fdbbe181e04d9ceaf2b8f5ea" width="230" height="230"/>
+        <image name="web" width="29" height="29"/>
     </resources>
 </document>
