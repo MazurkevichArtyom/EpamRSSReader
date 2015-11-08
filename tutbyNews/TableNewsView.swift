@@ -9,8 +9,7 @@
 import UIKit
 
 
-class TableNewsView : UITableViewController{//, NSXMLParserDelegate{
-    
+class TableNewsView : UITableViewController{
     
     var myParser = Parser()
     var news = [News]()
@@ -64,20 +63,21 @@ class TableNewsView : UITableViewController{//, NSXMLParserDelegate{
         cell.textNews.text = newsToCell.descriptionNews
         cell.dateNews.text = newsToCell.dateNews
         cell.nameNews.text = newsToCell.titleNews
+        cell.pictureNews.image = UIImage(named: "e6506d85fdbbe181e04d9ceaf2b8f5ea.jpg")
+        
         let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+        
         dispatch_async(queue, { () -> Void in
-
         if (newsToCell.imageLinkNews.hasSuffix(".jpg") || newsToCell.imageLinkNews.hasSuffix(".png") || newsToCell.imageLinkNews.hasSuffix(".gif")){
             let urlPict = NSURL(string: newsToCell.imageLinkNews)
             if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
-                cell.pictureNews.image = newsImage
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    cell.pictureNews.image = newsImage
+                })
             }
-            
         }
-            })
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
         })
-
+        
 
         return cell
     }

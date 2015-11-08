@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--NEWS-->
         <scene sceneID="kUi-eX-kk1">
             <objects>
                 <tableViewController id="3b2-LU-7b1" customClass="TableNewsView" customModule="tutbyNews" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,6 +76,7 @@
                                     <outlet property="nameNews" destination="Gb0-oz-inW" id="mcd-Qx-cor"/>
                                     <outlet property="pictureNews" destination="Tfa-6N-6ak" id="gcD-4A-Xmz"/>
                                     <outlet property="textNews" destination="RtL-qq-NQj" id="YeS-0z-XGZ"/>
+                                    <segue destination="RXk-YZ-eB3" kind="show" id="oMg-s0-9sj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -84,11 +85,33 @@
                             <outlet property="delegate" destination="3b2-LU-7b1" id="H6S-gS-CKQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="2ud-o0-qbk"/>
+                    <navigationItem key="navigationItem" title="NEWS" id="2ud-o0-qbk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R65-Bc-Thp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="608" y="748"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="1du-Sg-IrX">
+            <objects>
+                <viewController id="RXk-YZ-eB3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JHr-3C-LKz"/>
+                        <viewControllerLayoutGuide type="bottom" id="JG3-hA-Ecg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EOx-3s-8cZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="aPC-Mb-lvy">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="S1G-FM-VJE"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pn-Sl-gIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1308" y="748"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CzA-IL-vl7">
