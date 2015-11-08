@@ -11,21 +11,20 @@ import UIKit
 class Parser : NSXMLParser, NSXMLParserDelegate {
     
     var xmlPaeser : NSXMLParser!
-    let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
-    func refreshNews() {
-        self.xmlPaeser = NSXMLParser(contentsOfURL: UrlString!)
+    var news = [News]()
+    
+    func refreshNews(UrlString : NSURL) {
+        self.xmlPaeser = NSXMLParser(contentsOfURL: UrlString)
         self.xmlPaeser.delegate = self
         self.xmlPaeser.parse()
     }
     
-    var news = [News]()
-    
-    var entryTitle: String!
-    var entryLink: String!
-    var entryImage: String!
-    var entryDescription: String!
-    var entryCategory: String!
-    var entryPubDate: String!
+    var entryTitle = ""
+    var entryLink = ""
+    var entryImage = ""
+    var entryDescription = ""
+    var entryCategory = ""
+    var entryPubDate = ""
     
     var currentParsedElement = String()
     
@@ -123,6 +122,7 @@ class Parser : NSXMLParser, NSXMLParserDelegate {
             }
             
             if elementName == "item"{
+                
                 let entryNews = News()
                 entryNews.titleNews = entryTitle
                 entryNews.linkNews = entryLink

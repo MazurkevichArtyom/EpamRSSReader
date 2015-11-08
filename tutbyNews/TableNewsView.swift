@@ -9,9 +9,14 @@
 import UIKit
 
 
-class TableNewsView : UITableViewController, NSXMLParserDelegate{
+class TableNewsView : UITableViewController{//, NSXMLParserDelegate{
     
-    var xmlPaeser : NSXMLParser!
+    
+    var myParser = Parser()
+    var news = [News]()
+    /*var xmlPaeser : NSXMLParser!
+    //http://www.theverge.com/rss/frontpage
+    //http://www.nytimes.com/services/xml/rss/nyt/World.xml
     let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
     func refreshNews() {
         self.xmlPaeser = NSXMLParser(contentsOfURL: UrlString!)
@@ -21,12 +26,12 @@ class TableNewsView : UITableViewController, NSXMLParserDelegate{
     
     var news = [News]()
     
-    var entryTitle: String!
-    var entryLink: String!
-    var entryImage: String!
-    var entryDescription: String!
-    var entryCategory: String!
-    var entryPubDate: String!
+    var entryTitle = ""
+    var entryLink = ""
+    var entryImage = ""
+    var entryDescription = ""
+    var entryCategory = ""
+    var entryPubDate = ""
     
     var currentParsedElement = String()
     
@@ -143,17 +148,23 @@ class TableNewsView : UITableViewController, NSXMLParserDelegate{
         //print(news[0].titleNews)
         //print(news[0].categoryNews)
         // print(news[0].dateNews)
-        print(news[22].descriptionNews)
+        print(news[0].descriptionNews)
         //  print(news[0].linkNews)
-        print(news[22].imageLinkNews)
-        
+        print(news[0].imageLinkNews)
+        print(news[1].imageLinkNews)
+        print(news[2].imageLinkNews)
     }
-
+*/
+    
     
     override func viewDidLoad() {
-        refreshNews()
+        let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
+        if (UrlString != nil){
+            myParser.refreshNews(UrlString!)
+            news = myParser.news
+        }
+        //refreshNews()
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -187,8 +198,12 @@ class TableNewsView : UITableViewController, NSXMLParserDelegate{
         cell.textNews.text = newsToCell.descriptionNews
         cell.dateNews.text = newsToCell.dateNews
         cell.nameNews.text = newsToCell.titleNews
-        cell.pictureNews.image = UIImage(data: NSData(contentsOfURL: NSURL(string: newsToCell.imageLinkNews)!)!)
-        
+        if (newsToCell.imageLinkNews.hasSuffix("jpg") || newsToCell.imageLinkNews.hasSuffix("jpg") || newsToCell.imageLinkNews.hasSuffix("gif")){
+            let urlPict = NSURL(string: newsToCell.imageLinkNews)
+            if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
+                cell.pictureNews.image = newsImage
+            }
+        }
         return cell
     }
     
