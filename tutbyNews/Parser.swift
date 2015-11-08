@@ -8,12 +8,13 @@
 
 import UIKit
 
-class Parser : NSXMLParser, NSXMLParserDelegate {
+class Parser : NSObject, NSXMLParserDelegate {
     
     var xmlPaeser : NSXMLParser!
     var news = [News]()
     
     func refreshNews(UrlString : NSURL) {
+        news = [News]();
         self.xmlPaeser = NSXMLParser(contentsOfURL: UrlString)
         self.xmlPaeser.delegate = self
         self.xmlPaeser.parse()
@@ -141,10 +142,10 @@ class Parser : NSXMLParser, NSXMLParserDelegate {
     func parserDidEndDocument(parser: NSXMLParser){
         //print(news[0].titleNews)
         //print(news[0].categoryNews)
-        // print(news[0].dateNews)
-        print(news[22].descriptionNews)
+        //print(news[0].dateNews)
+        //print(news[4].descriptionNews)
         //  print(news[0].linkNews)
-        print(news[22].imageLinkNews)
+        //print(news[4].imageLinkNews)
         
     }
 
