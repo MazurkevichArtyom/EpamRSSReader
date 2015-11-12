@@ -84,6 +84,15 @@ class TableNewsView : UITableViewController{
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "goToNews"){
+            if let nextVC = segue.destinationViewController as? NewsViewController{
+                let index = self.tableView.indexPathForSelectedRow;
+                nextVC.news = news[index!.row]
+            }
+        }
+    }
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
