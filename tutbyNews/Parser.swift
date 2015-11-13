@@ -26,6 +26,8 @@ class Parser : NSObject, NSXMLParserDelegate {
     var entryDescription = ""
     var entryCategory = ""
     var entryPubDate = ""
+    var entryMediaContent = ""
+    var entryMediaContentMass = [String]()
     
     var currentParsedElement = String()
     
@@ -63,6 +65,10 @@ class Parser : NSObject, NSXMLParserDelegate {
                 entryPubDate = String()
                 currentParsedElement = "pubDate"
                 
+            case "media:content":
+                entryMediaContent = attributeDict["url"] as String!
+                currentParsedElement = "media:content"
+                
             default :break
             }
         }
@@ -91,12 +97,16 @@ class Parser : NSObject, NSXMLParserDelegate {
             case "pubDate":
                 entryPubDate = entryPubDate + string
                 
+            case "media:content":
+                entryMediaContent = entryMediaContent + string
+                
             default: break
             }
         }
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
+        
         if weAreInsideAnItem {
             
             switch elementName{
@@ -119,6 +129,11 @@ class Parser : NSObject, NSXMLParserDelegate {
             case "pubDate":
                 currentParsedElement = ""
                 
+            case "media:content":
+                currentParsedElement = ""
+                entryMediaContentMass.append(entryMediaContent)
+
+                
             default: break
             }
             
@@ -131,6 +146,7 @@ class Parser : NSObject, NSXMLParserDelegate {
                 entryNews.categoryNews = entryCategory
                 entryNews.imageLinkNews = entryImage
                 entryNews.dateNews = entryPubDate
+                entryNews.mediaContent = entryMediaContentMass
                 
                 news.append(entryNews)
                 weAreInsideAnItem = false

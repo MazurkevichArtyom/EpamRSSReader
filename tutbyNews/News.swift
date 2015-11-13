@@ -16,4 +16,5 @@ class News {
     var imageLinkNews = String()
     var categoryNews = String()
     var dateNews = String()
+    var mediaContent = [String]()
 }

@@ -12,7 +12,10 @@ class NewsViewController: UIViewController{
     
     var news = News()
 
+    @IBOutlet weak var titleOfNews: UINavigationItem!
+    
     override func viewDidLoad() {
+        titleOfNews.title = news.titleNews
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

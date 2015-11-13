@@ -148,6 +148,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="titleOfNews" destination="aPC-Mb-lvy" id="r4p-17-qor"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pn-Sl-gIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
