@@ -108,14 +108,26 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0u-K9-Zwd">
+                                <rect key="frame" x="-104" y="9" width="600" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="V3S-Wo-AXq"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="qhM-tA-hef"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fDr-0p-jP9" firstAttribute="top" secondItem="tho-k2-1pV" secondAttribute="bottom" id="0cs-ee-bUG"/>
-                            <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="8IL-Tv-M9b" secondAttribute="bottom" id="JZL-md-5UL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L0u-K9-Zwd" secondAttribute="trailing" constant="84" id="CfG-jP-3lr"/>
+                            <constraint firstItem="8IL-Tv-M9b" firstAttribute="top" secondItem="L0u-K9-Zwd" secondAttribute="bottom" constant="11" id="Zgc-7n-snP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tho-k2-1pV" secondAttribute="trailing" constant="-20" id="mgg-jE-e74"/>
                             <constraint firstItem="tho-k2-1pV" firstAttribute="leading" secondItem="bdQ-sr-npB" secondAttribute="leadingMargin" constant="-20" id="xSX-ZB-Z8s"/>
+                            <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="L0u-K9-Zwd" secondAttribute="bottom" constant="11" id="xmI-xK-YRr"/>
                         </constraints>
                     </view>
                     <connections>

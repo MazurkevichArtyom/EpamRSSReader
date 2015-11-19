@@ -16,7 +16,7 @@ class TableNewsView : UITableViewController{
     var indexRow = 0
     
     override func viewDidLoad() {
-        let UrlString = NSURL(string: "http://deepapple.com/news/rss/rss.xml")
+        let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
         
 
         if (UrlString != nil){
