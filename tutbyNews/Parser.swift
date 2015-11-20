@@ -147,7 +147,7 @@ class Parser : NSObject, NSXMLParserDelegate {
                 entryNews.imageLinkNews = entryImage
                 entryNews.dateNews = entryPubDate
                 entryNews.mediaContent = entryMediaContentMass
-                
+                entryMediaContentMass = [String]()
                 news.append(entryNews)
                 weAreInsideAnItem = false
             }

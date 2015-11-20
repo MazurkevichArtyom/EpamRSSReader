@@ -104,32 +104,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tho-k2-1pV">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0u-K9-Zwd">
-                                <rect key="frame" x="-104" y="9" width="600" height="44"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="V3S-Wo-AXq"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Title" id="qhM-tA-hef"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fDr-0p-jP9" firstAttribute="top" secondItem="tho-k2-1pV" secondAttribute="bottom" id="0cs-ee-bUG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="L0u-K9-Zwd" secondAttribute="trailing" constant="84" id="CfG-jP-3lr"/>
-                            <constraint firstItem="8IL-Tv-M9b" firstAttribute="top" secondItem="L0u-K9-Zwd" secondAttribute="bottom" constant="11" id="Zgc-7n-snP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tho-k2-1pV" secondAttribute="trailing" constant="-20" id="mgg-jE-e74"/>
-                            <constraint firstItem="tho-k2-1pV" firstAttribute="leading" secondItem="bdQ-sr-npB" secondAttribute="leadingMargin" constant="-20" id="xSX-ZB-Z8s"/>
-                            <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="L0u-K9-Zwd" secondAttribute="bottom" constant="11" id="xmI-xK-YRr"/>
+                            <constraint firstItem="tho-k2-1pV" firstAttribute="leading" secondItem="bdQ-sr-npB" secondAttribute="leadingMargin" constant="-20" id="6cn-zD-BSr"/>
+                            <constraint firstItem="fDr-0p-jP9" firstAttribute="top" secondItem="tho-k2-1pV" secondAttribute="bottom" id="ARP-ux-imC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tho-k2-1pV" secondAttribute="trailing" constant="-20" id="LFG-cB-oAx"/>
+                            <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="bdQ-sr-npB" secondAttribute="topMargin" id="T9p-pR-Hbc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6vw-qX-e3Y">
+                        <barButtonItem key="rightBarButtonItem" image="home" id="VBQ-f1-r5A"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="newsWebPage" destination="tho-k2-1pV" id="iaW-Cg-wSZ"/>
                     </connections>
@@ -149,8 +140,20 @@
                     <view key="view" contentMode="scaleToFill" id="EOx-3s-8cZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-RY-qSn">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                            </scrollView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xlg-RY-qSn" firstAttribute="top" secondItem="JHr-3C-LKz" secondAttribute="bottom" id="Oj9-nS-Osu"/>
+                            <constraint firstItem="JG3-hA-Ecg" firstAttribute="top" secondItem="xlg-RY-qSn" secondAttribute="bottom" id="XuB-sP-Wc5"/>
+                            <constraint firstItem="xlg-RY-qSn" firstAttribute="leading" secondItem="EOx-3s-8cZ" secondAttribute="leadingMargin" constant="-20" id="ite-Ex-Oy3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xlg-RY-qSn" secondAttribute="trailing" constant="-20" id="oL6-Ss-gt6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="aPC-Mb-lvy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="S1G-FM-VJE"/>
@@ -161,6 +164,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="scrollView" destination="xlg-RY-qSn" id="BNv-GM-K4v"/>
                         <outlet property="titleOfNews" destination="aPC-Mb-lvy" id="r4p-17-qor"/>
                     </connections>
                 </viewController>
@@ -188,6 +192,7 @@
     </scenes>
     <resources>
         <image name="e6506d85fdbbe181e04d9ceaf2b8f5ea" width="230" height="230"/>
+        <image name="home" width="29" height="29"/>
         <image name="web" width="29" height="29"/>
     </resources>
 </document>
