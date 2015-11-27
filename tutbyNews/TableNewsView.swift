@@ -93,6 +93,9 @@ class TableNewsView : UITableViewController{
         }
     }
     
+    @IBAction func goToHome(segue: UIStoryboardSegue){
+        
+    }
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

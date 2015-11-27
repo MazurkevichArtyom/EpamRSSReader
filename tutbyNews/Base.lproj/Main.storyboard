@@ -119,13 +119,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6vw-qX-e3Y">
-                        <barButtonItem key="rightBarButtonItem" image="home" id="VBQ-f1-r5A"/>
+                        <barButtonItem key="rightBarButtonItem" image="home" id="VBQ-f1-r5A">
+                            <connections>
+                                <segue destination="eed-GI-Egt" kind="unwind" unwindAction="goToHome:" id="M0B-Ba-j3e"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newsWebPage" destination="tho-k2-1pV" id="iaW-Cg-wSZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7hV-Yo-QoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eed-GI-Egt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1285" y="-232"/>
         </scene>
