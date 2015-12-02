@@ -12,37 +12,55 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     
     var news = News()
     
+    @IBOutlet weak var NewsView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleOfNews: UINavigationItem!
     
+
     override func viewDidLoad() {
        
         titleOfNews.title = news.titleNews
+        let subView = UIView()
+        let leftConstr = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 8)
+        let topConstr = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.TopMargin, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.TopMargin, multiplier: 1.0, constant: 8)
+        scrollView.addSubview(subView)
+        scrollView.addConstraint(leftConstr)
+        scrollView.addConstraint(topConstr)
         
-        let title = UILabel(frame: CGRect(x: 7, y: -50, width: 400, height: 100))
+        let title = UILabel()//frame: CGRect(x: 7, y: -50, width: 400, height: 100))
+        
         title.numberOfLines = 0
         title.font = UIFont.monospacedDigitSystemFontOfSize(18, weight: 2)
         title.text=news.titleNews
-        scrollView.addSubview(title)
+        
+        let leftConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
+        let rightConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+        let topConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -50)
+        subView.addSubview(title)
+        subView.addConstraint(leftConstrl)
+        subView.addConstraint(topConstrl)
+        subView.addConstraint(rightConstrl)
+        
+        //scrollView.addSubview(title)
         
         
         let dateNews = UILabel(frame: CGRect(x: 227, y: -20, width: 150, height: 150))
         dateNews.numberOfLines = 0
         dateNews.font = UIFont.italicSystemFontOfSize(16)
         dateNews.text=news.dateNews
-        scrollView.addSubview(dateNews)
+        subView.addSubview(dateNews)
         
         let text = UILabel(frame: CGRect(x: 7, y: 70, width: 400, height: 150))
         text.numberOfLines = 0
         text.font = UIFont.monospacedDigitSystemFontOfSize(16, weight: 0)
         text.text=news.descriptionNews
-        scrollView.addSubview(text)
+        subView.addSubview(text)
         
         let category = UILabel(frame: CGRect(x: 7, y: 40, width: 200, height: 20))
         category.numberOfLines = 0
         category.font = UIFont.monospacedDigitSystemFontOfSize(17, weight: 2)
         category.text=news.categoryNews
-        scrollView.addSubview(category)
+        subView.addSubview(category)
         
         var lengthToImg = 0
         
@@ -63,7 +81,7 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
                         image.image=UIImage(data: imageData)
                     }
                 })
-                scrollView.addSubview(image)
+                subView.addSubview(image)
                 
             }
         }
@@ -101,7 +119,7 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
-
+    }*/
 }
+
+
