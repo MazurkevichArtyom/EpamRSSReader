@@ -14,6 +14,7 @@ class TableNewsView : UITableViewController{
     var myParser = Parser()
     var news = [News]()
     var indexRow = 0
+    var imageCache = [String:UIImage]()
     
     override func viewDidLoad() {
         let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
@@ -27,7 +28,6 @@ class TableNewsView : UITableViewController{
             
         //http://deepapple.com/news/rss/rss.xml
         //http://news.tut.by/rss/index.rss
-        //http://www.theverge.com/rss/frontpage
         //http://www.nytimes.com/services/xml/rss/nyt/World.xml
         super.viewDidLoad()
         
@@ -67,19 +67,26 @@ class TableNewsView : UITableViewController{
         cell.indexTag = indexPath.row
         let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
         
-        dispatch_async(queue, { () -> Void in
-        if (newsToCell.imageLinkNews.hasSuffix(".jpg") || newsToCell.imageLinkNews.hasSuffix(".png") || newsToCell.imageLinkNews.hasSuffix(".gif")){
+        if let newsImage = imageCache[newsToCell.imageLinkNews]{
+            cell.pictureNews.image = newsImage
+
+        }
+        else{
+            dispatch_async(queue, { () -> Void in
+                if (newsToCell.imageLinkNews.hasSuffix(".jpg") || newsToCell.imageLinkNews.hasSuffix(".png") || newsToCell.imageLinkNews.hasSuffix(".gif")){
+            
             let urlPict = NSURL(string: newsToCell.imageLinkNews)
             if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
+                self.imageCache[newsToCell.imageLinkNews]=newsImage
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if (cell.indexTag == indexPath.row){
                         cell.pictureNews.image = newsImage
+                        }
+                    })
                     }
-                })
-            }
+                }
+            })
         }
-        })
-        
 
         return cell
     }

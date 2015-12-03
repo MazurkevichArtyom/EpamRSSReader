@@ -15,7 +15,8 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     @IBOutlet weak var NewsView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleOfNews: UINavigationItem!
-    
+    var subView = UIView()
+    var width = NSLayoutConstraint()
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -25,14 +26,14 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         
         titleOfNews.title = news.titleNews
         
-        let subView = UIView()
+        
         subView.translatesAutoresizingMaskIntoConstraints = false;
         
         let topConstr = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -30)
         let bottom = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         let right = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
         let left = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
-        let width =  NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: UIScreen.mainScreen().bounds.width)
+        width =  NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: UIScreen.mainScreen().bounds.width)
         
         scrollView.addSubview(subView)
         
@@ -126,7 +127,7 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
                 })
                 subView.addSubview(image)
                 
-                let imgHeight =  NSLayoutConstraint(item: image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 300)
+                let imgHeight =  NSLayoutConstraint(item: image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 400)
                 
                 let imgLeft =  NSLayoutConstraint(item: image, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10)
                 
@@ -168,7 +169,13 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
 
         }
     }
-
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        width.constant = UIScreen.mainScreen().bounds.width
+        UIView.animateWithDuration(0) {
+            self.subView.layoutIfNeeded()
+        }
+    }
     /*
     // MARK: - Navigation
 
