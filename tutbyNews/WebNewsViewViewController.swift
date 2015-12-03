@@ -13,11 +13,14 @@ class WebNewsViewViewController: UIViewController {
     var urlString = ""
     @IBOutlet weak var newsWebPage: UIWebView!
 
+  
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         if let url = NSURL(string: urlString) {
             let reqNsURL = NSURLRequest(URL: url)
             newsWebPage.loadRequest(reqNsURL)
+            
         }
         
 

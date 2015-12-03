@@ -115,7 +115,11 @@
                             <constraint firstItem="tho-k2-1pV" firstAttribute="leading" secondItem="bdQ-sr-npB" secondAttribute="leadingMargin" constant="-20" id="6cn-zD-BSr"/>
                             <constraint firstItem="fDr-0p-jP9" firstAttribute="top" secondItem="tho-k2-1pV" secondAttribute="bottom" id="ARP-ux-imC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tho-k2-1pV" secondAttribute="trailing" constant="-20" id="LFG-cB-oAx"/>
+                            <constraint firstAttribute="trailing" secondItem="tho-k2-1pV" secondAttribute="trailing" id="NKn-dI-bnT"/>
+                            <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="bdQ-sr-npB" secondAttribute="top" id="RHI-Sq-Cmr"/>
                             <constraint firstItem="tho-k2-1pV" firstAttribute="top" secondItem="bdQ-sr-npB" secondAttribute="topMargin" id="T9p-pR-Hbc"/>
+                            <constraint firstItem="tho-k2-1pV" firstAttribute="leading" secondItem="bdQ-sr-npB" secondAttribute="leading" id="fVp-2I-N2A"/>
+                            <constraint firstItem="fDr-0p-jP9" firstAttribute="top" secondItem="tho-k2-1pV" secondAttribute="bottom" id="gzc-ER-lSB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6vw-qX-e3Y">

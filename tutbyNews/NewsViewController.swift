@@ -18,17 +18,17 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     
     override func viewDidLoad() {
         
-            super.viewDidLoad()
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.scrollView.delegate = self
         self.scrollView.frame = UIScreen.mainScreen().bounds
-        self.scrollView.backgroundColor = UIColor.brownColor()
         
         titleOfNews.title = news.titleNews
+        
         let subView = UIView()
         subView.translatesAutoresizingMaskIntoConstraints = false;
         
-        let topConstr = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
+        let topConstr = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -30)
         let bottom = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
         let right = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
         let left = NSLayoutConstraint(item: subView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
@@ -40,8 +40,6 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         
         
         let title = UILabel()
-        title.backgroundColor = UIColor.redColor()
-        
         title.numberOfLines = 0
         title.font = UIFont.monospacedDigitSystemFontOfSize(18, weight: 2)
         title.text=news.titleNews
@@ -50,9 +48,9 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         
         title.translatesAutoresizingMaskIntoConstraints = false
         
-        let topConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
-        let leftConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
-        let rightConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+        let topConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 10)
+        let leftConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10)
+        let rightConstrl = NSLayoutConstraint(item: title, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10)
         
         subView.addSubview(title)
         subView.addConstraints([topConstrl,leftConstrl,rightConstrl])
@@ -63,13 +61,12 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         category.font = UIFont.monospacedDigitSystemFontOfSize(17, weight: 2)
         category.text=news.categoryNews
         category.translatesAutoresizingMaskIntoConstraints = false
-        category.backgroundColor = UIColor.blueColor()
         
         subView.addSubview(category)
         
         
-        let topCat = NSLayoutConstraint(item: category, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: title, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
-        let leftCat = NSLayoutConstraint(item: category, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
+        let topCat = NSLayoutConstraint(item: category, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: title, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10)
+        let leftCat = NSLayoutConstraint(item: category, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10)
         let widthCat = NSLayoutConstraint(item: category, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Width, multiplier: 0.5, constant: 0)
         subView.addConstraints([topCat, leftCat, widthCat])
         
@@ -83,9 +80,9 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         
         subView.addSubview(dateNews)
         
-        let topDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: title, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
-        let lefDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: category, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
-        let rightDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+        let topDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: title, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10)
+        let lefDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: category, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 10)
+        let rightDate = NSLayoutConstraint(item: dateNews, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10)
         subView.addConstraints([topDate, lefDate, rightDate])
         
         
@@ -98,18 +95,22 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
         
         subView.addSubview(text)
         
-        let topText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: dateNews, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0)
-        let lefText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
-        let rightText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+        let topText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: dateNews, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10)
+        let lefText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10)
+        let rightText = NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10)
         
         subView.addConstraints([topText, lefText, rightText])
         
+        if (news.mediaContent.count==0){
+            let bottomDesC =  NSLayoutConstraint(item: text, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: subView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -10)
+            subView.addConstraint(bottomDesC)
+        }
         
         let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
         
         var prevImg : UIView? = nil
         for link in self.news.mediaContent{
-            if (link.hasSuffix(".jpg") || link.hasSuffix(".png") || link.hasSuffix(".gif")){
+            if ((link.hasSuffix(".jpg") || link.hasSuffix(".png") || link.hasSuffix(".gif")) && link.containsString("knopka")==false){
                 
                 let image = UIImageView()
                 image.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +119,9 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
                 dispatch_async(queue, { () -> Void in
                     
                     if let imageData = NSData(contentsOfURL: NSURL(string: link)!){
-                        image.image=UIImage(data: imageData)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            image.image=UIImage(data: imageData)
+                        })
                     }
                 })
                 subView.addSubview(image)
