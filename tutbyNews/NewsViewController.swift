@@ -122,6 +122,7 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
                     if let imageData = NSData(contentsOfURL: NSURL(string: link)!){
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             image.image=UIImage(data: imageData)
+                            image.backgroundColor = UIColor.clearColor()
                         })
                     }
                 })
@@ -172,7 +173,7 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         width.constant = UIScreen.mainScreen().bounds.width
-        UIView.animateWithDuration(0) {
+        UIView.animateWithDuration(0.1) {
             self.subView.layoutIfNeeded()
         }
     }
