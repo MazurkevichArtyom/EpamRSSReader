@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="News" representedClassName="News" syncable="YES">
+        <attribute name="categoryNews" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateNews" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionNews" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageLinkNews" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkNews" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mediaContent" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="titleNews" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="News" positionX="-1908" positionY="-315" width="128" height="148"/>
+    </elements>
+</model>

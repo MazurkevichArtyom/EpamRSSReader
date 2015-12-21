@@ -11,12 +11,15 @@ import UIKit
 
 class TableNewsView : UITableViewController{
     
+    var cache : Cache?
+    var defaults = NSUserDefaults.standardUserDefaults()
     var myParser = Parser()
     var news = [News]()
-    var indexRow = 0
     var imageCache = [String:UIImage]()
-    
-    override func viewDidLoad() {
+        override func viewDidLoad() {
+        
+        cache = AppDelegate.getCache()
+        self.tableView.reloadData()
         let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
         
 
@@ -59,6 +62,8 @@ class TableNewsView : UITableViewController{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as! NewsCell
+        
+        cell.backgroundColor = setBcgColor(defaults.integerForKey("BcgColor"))
         let newsToCell = news[indexPath.row]
         cell.textNews.text = newsToCell.descriptionNews
         cell.dateNews.text = newsToCell.dateNews
@@ -67,7 +72,7 @@ class TableNewsView : UITableViewController{
         cell.indexTag = indexPath.row
         let queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
         
-        if let newsImage = imageCache[newsToCell.imageLinkNews]{
+        if let newsImage = cache?.get(newsToCell.imageLinkNews){
             cell.pictureNews.image = newsImage
 
         }
@@ -76,8 +81,9 @@ class TableNewsView : UITableViewController{
                 if (newsToCell.imageLinkNews.hasSuffix(".jpg") || newsToCell.imageLinkNews.hasSuffix(".png") || newsToCell.imageLinkNews.hasSuffix(".gif")){
             
             let urlPict = NSURL(string: newsToCell.imageLinkNews)
+                    
             if let newsImage = UIImage(data: NSData(contentsOfURL: urlPict!)!){
-                self.imageCache[newsToCell.imageLinkNews]=newsImage
+                self.cache?.put(newsImage, newsToCell.imageLinkNews)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if (cell.indexTag == indexPath.row){
                         cell.pictureNews.image = newsImage
@@ -103,6 +109,30 @@ class TableNewsView : UITableViewController{
     @IBAction func goToHome(segue: UIStoryboardSegue){
         
     }
+    
+    func setBcgColor(type: Int)->UIColor{
+        
+        if type == 0{
+            return UIColor.whiteColor()
+        }
+        else if type == 1{
+            return UIColor.grayColor()
+        }
+        else if type == 2{
+            return UIColor.yellowColor()
+        }
+        else if type == 3{
+            return UIColor.greenColor()
+        }
+        else if type == 4{
+            return UIColor.redColor()
+        }
+        else{
+            return UIColor.blueColor()
+        }
+        
+    }
+
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

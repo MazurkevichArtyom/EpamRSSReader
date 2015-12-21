@@ -17,10 +17,12 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
     @IBOutlet weak var titleOfNews: UINavigationItem!
     var subView = UIView()
     var width = NSLayoutConstraint()
+    var defaults = NSUserDefaults.standardUserDefaults()
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        subView.backgroundColor = setBcgColor(defaults.integerForKey("BcgColor"))
         self.scrollView.delegate = self
         self.scrollView.frame = UIScreen.mainScreen().bounds
         
@@ -118,12 +120,13 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
                 image.backgroundColor = UIColor.grayColor()
                 
                 dispatch_async(queue, { () -> Void in
-                    
+                   if (self.defaults.boolForKey("imgFlag")){
                     if let imageData = NSData(contentsOfURL: NSURL(string: link)!){
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             image.image=UIImage(data: imageData)
                             image.backgroundColor = UIColor.clearColor()
                         })
+                    }
                     }
                 })
                 subView.addSubview(image)
@@ -177,6 +180,30 @@ class NewsViewController: UIViewController,UIScrollViewDelegate{
             self.subView.layoutIfNeeded()
         }
     }
+    
+    func setBcgColor(type: Int)->UIColor{
+        
+        if type == 0{
+            return UIColor.whiteColor()
+        }
+        else if type == 1{
+            return UIColor.grayColor()
+        }
+        else if type == 2{
+            return UIColor.yellowColor()
+        }
+        else if type == 3{
+            return UIColor.greenColor()
+        }
+        else if type == 4{
+            return UIColor.redColor()
+        }
+        else{
+            return UIColor.blueColor()
+        }
+        
+    }
+
     /*
     // MARK: - Navigation
 

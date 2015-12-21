@@ -85,11 +85,114 @@
                             <outlet property="delegate" destination="3b2-LU-7b1" id="H6S-gS-CKQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="NEWS" id="2ud-o0-qbk"/>
+                    <navigationItem key="navigationItem" title="NEWS" id="2ud-o0-qbk">
+                        <barButtonItem key="rightBarButtonItem" image="set" id="g3a-q8-TXr">
+                            <connections>
+                                <segue destination="oAu-MZ-QEv" kind="show" id="e97-02-p67"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="TableView" destination="HXb-W1-N4u" id="mVp-G3-IbS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R65-Bc-Thp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="608" y="748"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hk0-U9-Ghp">
+            <objects>
+                <viewController id="oAu-MZ-QEv" customClass="SettingsViewController" customModule="tutbyNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3m4-KW-HN4"/>
+                        <viewControllerLayoutGuide type="bottom" id="csc-S5-mDi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" semanticContentAttribute="playback" id="4Yk-se-AqX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Loading images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7e-R0-s4e">
+                                <rect key="frame" x="39" y="94" width="143" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bzk-MP-uts">
+                                <rect key="frame" x="233" y="90" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="imgOnOff:" destination="oAu-MZ-QEv" eventType="valueChanged" id="sgs-n8-2UG"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background color:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeE-Wu-xEp">
+                                <rect key="frame" x="39" y="147" width="163" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off/On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whb-ew-amZ">
+                                <rect key="frame" x="323" y="94" width="61" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoO-vs-Vhl">
+                                <rect key="frame" x="39" y="174" width="320" height="216"/>
+                                <animations/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDn-FR-ISD">
+                                <rect key="frame" x="220" y="387" width="75" height="75"/>
+                                <animations/>
+                                <state key="normal" image="delCache4"/>
+                                <connections>
+                                    <action selector="cleanCache:" destination="oAu-MZ-QEv" eventType="touchUpInside" id="1Ao-Le-oYJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clean cache" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="787-tg-kYZ">
+                                <rect key="frame" x="39" y="414" width="112" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="787-tg-kYZ" firstAttribute="leading" secondItem="4Yk-se-AqX" secondAttribute="leadingMargin" constant="19" id="3PU-47-H7X"/>
+                            <constraint firstItem="whb-ew-amZ" firstAttribute="top" secondItem="3m4-KW-HN4" secondAttribute="bottom" constant="30" id="4Cr-4l-YkG"/>
+                            <constraint firstItem="Bzk-MP-uts" firstAttribute="leading" secondItem="I7e-R0-s4e" secondAttribute="trailing" constant="51" id="4Fh-e7-s5S"/>
+                            <constraint firstItem="whb-ew-amZ" firstAttribute="leading" secondItem="Bzk-MP-uts" secondAttribute="trailing" constant="41" id="BSN-Mp-ZdS"/>
+                            <constraint firstItem="GDn-FR-ISD" firstAttribute="top" secondItem="Bzk-MP-uts" secondAttribute="bottom" constant="266" id="EET-72-I9Q"/>
+                            <constraint firstItem="I7e-R0-s4e" firstAttribute="leading" secondItem="4Yk-se-AqX" secondAttribute="leadingMargin" constant="19" id="Et7-wZ-bUY"/>
+                            <constraint firstItem="PeE-Wu-xEp" firstAttribute="top" secondItem="Bzk-MP-uts" secondAttribute="bottom" constant="26" id="Ip0-kd-i33"/>
+                            <constraint firstItem="GDn-FR-ISD" firstAttribute="leading" secondItem="787-tg-kYZ" secondAttribute="trailing" constant="69" id="bzI-qm-N5Y"/>
+                            <constraint firstItem="SoO-vs-Vhl" firstAttribute="top" secondItem="PeE-Wu-xEp" secondAttribute="bottom" constant="3" id="d1a-uO-5Vk"/>
+                            <constraint firstItem="Bzk-MP-uts" firstAttribute="top" secondItem="3m4-KW-HN4" secondAttribute="bottom" constant="26" id="exR-2Q-IpX"/>
+                            <constraint firstItem="I7e-R0-s4e" firstAttribute="top" secondItem="3m4-KW-HN4" secondAttribute="bottom" constant="30" id="gtb-zN-F8u"/>
+                            <constraint firstItem="787-tg-kYZ" firstAttribute="top" secondItem="SoO-vs-Vhl" secondAttribute="bottom" constant="24" id="kTo-Nc-9MJ"/>
+                            <constraint firstItem="SoO-vs-Vhl" firstAttribute="leading" secondItem="4Yk-se-AqX" secondAttribute="leadingMargin" constant="19" id="l8e-6b-Iya"/>
+                            <constraint firstItem="PeE-Wu-xEp" firstAttribute="leading" secondItem="4Yk-se-AqX" secondAttribute="leadingMargin" constant="19" id="zAO-3I-cfH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="v7w-w9-T2o"/>
+                    <connections>
+                        <outlet property="ColorsPicker" destination="SoO-vs-Vhl" id="INb-vR-zPU"/>
+                        <outlet property="LabelBckgL" destination="PeE-Wu-xEp" id="hD7-yg-ef5"/>
+                        <outlet property="LabelOnOff" destination="whb-ew-amZ" id="gSE-8l-LJj"/>
+                        <outlet property="LabelToImg" destination="I7e-R0-s4e" id="cxu-Y2-aZr"/>
+                        <outlet property="SetView" destination="4Yk-se-AqX" id="LkA-qK-ulE"/>
+                        <outlet property="Switch" destination="Bzk-MP-uts" id="Ew4-xq-svh"/>
+                        <outlet property="SwitchOnOff" destination="4Yk-se-AqX" id="Zbk-Da-W17"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MdI-Ab-w1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="-36"/>
         </scene>
         <!--Web News View View Controller-->
         <scene sceneID="Sxq-aK-yjR">
@@ -200,8 +303,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delCache4" width="75" height="75"/>
         <image name="e6506d85fdbbe181e04d9ceaf2b8f5ea" width="230" height="230"/>
         <image name="home" width="29" height="29"/>
+        <image name="set" width="29" height="29"/>
         <image name="web" width="29" height="29"/>
     </resources>
 </document>
