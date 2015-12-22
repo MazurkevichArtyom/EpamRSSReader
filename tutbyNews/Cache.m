@@ -39,7 +39,6 @@
 -(UIImage *)get:(NSString *)key{
     
     return [UIImage imageWithData: [self.cache objectForKey:key]];
-    return  nil;
 }
 
 -(void)put:(UIImage *)image :(NSString *)key{

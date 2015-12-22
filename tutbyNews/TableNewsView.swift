@@ -19,7 +19,8 @@ class TableNewsView : UITableViewController{
         override func viewDidLoad() {
         
         cache = AppDelegate.getCache()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
+            
         let UrlString = NSURL(string: "http://news.tut.by/rss/index.rss")
         
 
@@ -41,6 +42,10 @@ class TableNewsView : UITableViewController{
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    @IBAction func refreshTable(sender: AnyObject) {
+        
+        self.tableView.reloadData()
+    }
     
     /*override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,7 +67,6 @@ class TableNewsView : UITableViewController{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as! NewsCell
-        
         cell.backgroundColor = setBcgColor(defaults.integerForKey("BcgColor"))
         let newsToCell = news[indexPath.row]
         cell.textNews.text = newsToCell.descriptionNews
@@ -77,6 +81,7 @@ class TableNewsView : UITableViewController{
 
         }
         else{
+            if(defaults.boolForKey("imgFlag")){
             dispatch_async(queue, { () -> Void in
                 if (newsToCell.imageLinkNews.hasSuffix(".jpg") || newsToCell.imageLinkNews.hasSuffix(".png") || newsToCell.imageLinkNews.hasSuffix(".gif")){
             
@@ -92,6 +97,7 @@ class TableNewsView : UITableViewController{
                     }
                 }
             })
+            }
         }
 
         return cell

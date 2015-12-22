@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource{
 
     @IBOutlet weak var LabelToImg: UILabel!
     
@@ -30,7 +30,11 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         
+        let value = UIInterfaceOrientation.Portrait.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+        
         super.viewDidLoad()
+        
         Switch.setOn(defaults.boolForKey("imgFlag"), animated: true)
         ColorsPicker.delegate = self
         ColorsPicker.dataSource = self
@@ -48,6 +52,20 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func cleanCache(sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Clean cache", message: "Do you want clean caache?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            (action) -> Void in
+            var cach : Cache
+            cach = AppDelegate.getCache()
+            cach.clear()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: {
+            (action) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+     //   self.presentViewController(alert, animated: true, completion: nil)
         
         sender.setImage(UIImage(named: "delCache"), forState: .Highlighted)
         
@@ -84,6 +102,22 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         //ColorsPicker.hidden = true;
     }
     
+    
+    override func shouldAutorotate() -> Bool {
+        
+        return true
+    }
+    
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        
+         return UIInterfaceOrientationMask.Portrait
+    }
+    
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+        return UIInterfaceOrientation.Portrait
+    }
+    
     func setBcgColor(type: Int)->UIColor{
         
         if type == 0{
@@ -106,6 +140,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
 
     }
+    
     /*
     // MARK: - Navigation
 

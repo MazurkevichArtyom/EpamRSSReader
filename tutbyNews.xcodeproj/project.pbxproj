@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C64B83B1C28E16200762F12 /* NavigContr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C64B83A1C28E16200762F12 /* NavigContr.swift */; };
 		3C67A3791BF414CE0078F62A /* WebNewsViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C67A3781BF414CE0078F62A /* WebNewsViewViewController.swift */; };
 		3C67A37B1BF4150A0078F62A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C67A37A1BF4150A0078F62A /* NewsViewController.swift */; };
 		3C71D60A1C27238A00CEFB1A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71D6091C27238A00CEFB1A /* SettingsViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C64B83A1C28E16200762F12 /* NavigContr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigContr.swift; sourceTree = "<group>"; };
 		3C67A3781BF414CE0078F62A /* WebNewsViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebNewsViewViewController.swift; sourceTree = "<group>"; };
 		3C67A37A1BF4150A0078F62A /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3C71D6091C27238A00CEFB1A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				3C67A3781BF414CE0078F62A /* WebNewsViewViewController.swift */,
 				3C67A37A1BF4150A0078F62A /* NewsViewController.swift */,
 				3C71D6091C27238A00CEFB1A /* SettingsViewController.swift */,
+				3C64B83A1C28E16200762F12 /* NavigContr.swift */,
 			);
 			path = tutbyNews;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				3CE571BD1BDD94B700E3CD0B /* Parser.swift in Sources */,
 				3CD96EDB1BD9990E00C56ECB /* News.swift in Sources */,
 				3C67A37B1BF4150A0078F62A /* NewsViewController.swift in Sources */,
+				3C64B83B1C28E16200762F12 /* NavigContr.swift in Sources */,
 				3CD96EB51BD9901000C56ECB /* AppDelegate.swift in Sources */,
 				3C67A3791BF414CE0078F62A /* WebNewsViewViewController.swift in Sources */,
 				3C71D60A1C27238A00CEFB1A /* SettingsViewController.swift in Sources */,

@@ -86,9 +86,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="NEWS" id="2ud-o0-qbk">
+                        <barButtonItem key="leftBarButtonItem" image="refresh" id="ZyB-BV-8ER">
+                            <connections>
+                                <action selector="refreshTable:" destination="3b2-LU-7b1" id="tkS-sC-CCD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="set" id="g3a-q8-TXr">
                             <connections>
-                                <segue destination="oAu-MZ-QEv" kind="show" id="e97-02-p67"/>
+                                <segue destination="oAu-MZ-QEv" kind="show" id="rQG-FM-Fl1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -116,7 +121,7 @@
                                 <rect key="frame" x="39" y="94" width="143" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bzk-MP-uts">
@@ -130,14 +135,14 @@
                                 <rect key="frame" x="39" y="147" width="163" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off/On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whb-ew-amZ">
                                 <rect key="frame" x="323" y="94" width="61" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoO-vs-Vhl">
@@ -156,7 +161,7 @@
                                 <rect key="frame" x="39" y="414" width="112" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -284,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="1308" y="748"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navig Contr-->
         <scene sceneID="CzA-IL-vl7">
             <objects>
-                <navigationController id="bGF-Nh-V6M" sceneMemberID="viewController">
+                <navigationController id="bGF-Nh-V6M" customClass="NavigContr" customModule="tutbyNews" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yem-qb-tlL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -306,6 +311,7 @@
         <image name="delCache4" width="75" height="75"/>
         <image name="e6506d85fdbbe181e04d9ceaf2b8f5ea" width="230" height="230"/>
         <image name="home" width="29" height="29"/>
+        <image name="refresh" width="29" height="29"/>
         <image name="set" width="29" height="29"/>
         <image name="web" width="29" height="29"/>
     </resources>
