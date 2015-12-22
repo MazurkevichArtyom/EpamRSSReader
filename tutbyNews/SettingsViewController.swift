@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension UIAlertController {
+    public override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+}
+
 class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource{
 
     @IBOutlet weak var LabelToImg: UILabel!
@@ -39,6 +49,7 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         ColorsPicker.delegate = self
         ColorsPicker.dataSource = self
         let numb = defaults.integerForKey("BcgColor")
+        ColorsPicker.selectRow(numb, inComponent: 0, animated: true)
         SetView.backgroundColor = setBcgColor(numb)
         // Do any additional setup after loading the view.
     }
@@ -65,13 +76,10 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         
-     //   self.presentViewController(alert, animated: true, completion: nil)
+        self.presentViewController(alert, animated: true, completion: nil)
         
         sender.setImage(UIImage(named: "delCache"), forState: .Highlighted)
         
-        var cach : Cache
-        cach = AppDelegate.getCache()
-        cach.clear()
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,6 +148,8 @@ class SettingsViewController: UIViewController,UIPickerViewDelegate, UIPickerVie
         }
 
     }
+    
+    
     
     /*
     // MARK: - Navigation
